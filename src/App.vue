@@ -3,9 +3,7 @@
     <div class="container">
       <div class="header-content">
         <div class="logo">
-          <p>
-            Logo <sup>here...</sup>
-          </p>
+          <p>Logo <sup>here...</sup></p>
         </div>
         <div class="containers-base">
           <template v-for="(item, index) in parentContainers">
@@ -29,11 +27,8 @@ import PopupBaseDetail from "./components/PopupBaseDetail";
 import PopupDetail from "./components/PopupDetail";
 import ListPosts from "./components/ListPosts";
 import { typesDialog } from "./configs/mock";
-let {
-  login,
-  signup,
-  forgotPassword,
-} = typesDialog;
+
+let { login, signup, forgotPassword } = typesDialog;
 
 export default {
   name: "App",
@@ -104,7 +99,6 @@ export default {
 .logo {
   display: flex;
   align-items: center;
-  
 }
 .logo p {
   margin: 0px;

@@ -1,11 +1,14 @@
 <template>
   <div class="post-thumbnail">
     <div class="item-flex">
-      <p class="title">
-        {{ post.title }}
-      </p>
-      <div class="right-btns">
+      <div class="left-title">
+        <p class="title">
+          {{ post.title }} &nbsp;
+        </p>
+        
         <button v-if="post.completed" class="link-trigger green">Done</button>
+      </div>
+      <div class="right-btns">
         <button class="link-trigger" @click="editPost">Edit</button>
         <button class="link-trigger red" @click="deletePost">Delete</button>
         <button class="link-trigger" @click="clickPost">View</button>
@@ -29,7 +32,7 @@ export default {
       let { post } = this;
       let link = {
         id: post["id"],
-        completed: post['completed'],
+        completed: post["completed"],
         linkTitle: post["title"],
         textContent:
           "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis placeat delectus porro voluptas minima ullam deserunt nisi rerum, asperiores possimus ex sint aut adipisci quisquam beatae numquam fugit sequi nemo?",
@@ -49,8 +52,8 @@ export default {
         linkTitle: `Do you want to delete post?`,
         textContent: descriptionPost["linkTitle"],
         actionForm: {
-            type: 'deleted',
-            label: 'Delete'
+          type: "deleted",
+          label: "Delete",
         },
         on: {
           click: () => {
@@ -64,28 +67,36 @@ export default {
       let { descriptionPost, post } = this;
       let link = {
         ...descriptionPost,
-        linkTitle: 'Update Task',
-        textContent: '',
+        linkTitle: "Update Task",
+        textContent: "",
         on: {
           click: (newPost = {}) => {
-            this.$emit("updatePost", {...post, ...newPost});
+            this.$emit("updatePost", { ...post, ...newPost });
           },
         },
         fields: [
-             {
-                label: 'Title',
-                name: 'title',
-                model: 'input',
-                required: true,
-                vBind: { class: 'field-input', type: 'text', value: descriptionPost['linkTitle'] }
+          {
+            label: "Title",
+            name: "title",
+            model: "input",
+            required: true,
+            vBind: {
+              class: "field-input",
+              type: "text",
+              value: descriptionPost["linkTitle"],
             },
-             {
-                label: 'Complete?',
-                name: 'completed',
-                model: 'input',
-                vBind: { class: 'field-input', type: 'checkbox', checked: descriptionPost['completed'] }
+          },
+          {
+            label: "Complete?",
+            name: "completed",
+            model: "input",
+            vBind: {
+              class: "field-input",
+              type: "checkbox",
+              checked: descriptionPost["completed"],
             },
-        ]
+          },
+        ],
       };
       this.$emit("clickPost", { link });
     },
@@ -104,6 +115,7 @@ export default {
 .title {
   font-size: 14px;
   /* font-weight: bold; */
+  margin-right: 5px;
 }
 .description {
   font-size: 12px;
@@ -126,5 +138,9 @@ export default {
 }
 .link-trigger.red {
   background: red;
+}
+.left-title {
+  display: flex;
+  align-items: center;
 }
 </style>

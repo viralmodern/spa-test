@@ -3,23 +3,31 @@
     <div class="popup-content">
       <div class="popup-content---container">
         <div class="header-popup">
-          <div class="title" v-html="textDescription.linkTitle"/>
+          <div class="title" v-html="textDescription.linkTitle" />
           <div class="spacer"></div>
           <button class="link-round" @click="closeModal">×</button>
         </div>
         <div class="content-popup" v-if="value">
-          <div class="text-content" v-html="textDescription.textContent"/>
+          <div class="text-content" v-html="textDescription.textContent" />
           <template v-if="textDescription.fields">
             <div class="form-content">
-              <FormModel :fields="textDescription.fields" :on="textDescription.on" @submitted="closeModal"/>
+              <FormModel
+                :fields="textDescription.fields"
+                :on="textDescription.on"
+                @submitted="submitted"
+              />
             </div>
           </template>
         </div>
         <div class="footer-popup" v-if="content.actionForm">
           <div>
             <div>
-              <button class="link-trigger red" v-on="content.on" @click="closeModal">
-                {{content.actionForm.label}}
+              <button
+                class="link-trigger red"
+                v-on="content.on"
+                @click="closeModal"
+              >
+                {{ content.actionForm.label }}
               </button>
             </div>
           </div>
@@ -43,7 +51,6 @@ export default {
       type: Object,
       default: () => ({}),
     },
-   
   },
   computed: {
     activeNameCls() {
@@ -54,13 +61,14 @@ export default {
       let { content = {} } = this;
       let linkTitle = "",
         textContent = "",
-        fields = [], on = {};
+        fields = [],
+        on = {};
       let temp = {
         linkTitle,
         textContent,
         content,
         fields,
-        on
+        on,
       };
       temp.linkTitle = content["linkTitle"];
       temp.textContent = content["textContent"];
@@ -73,6 +81,10 @@ export default {
     closeModal() {
       this.$emit("input", false);
     },
+    submitted(data) {
+      this.$emit("submitted", data);
+      this.$emit("input", false);
+    }
   },
 };
 </script>
@@ -98,7 +110,6 @@ export default {
   transition: all 0.25s linear;
 }
 .popup-content---container {
-  
   width: 100%;
   margin: 0px auto 0px auto;
   background: #fff;

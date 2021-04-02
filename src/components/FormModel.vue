@@ -61,7 +61,7 @@ export default {
       if (Object.keys(on).length > 0 && on.hasOwnProperty("click")) {
         on.click(formModel);
       }
-      this.$emit('submitted')
+      this.$emit('submitted', {formModel})
       return false;
     },
     checkErrors() {

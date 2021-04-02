@@ -91,43 +91,5 @@ export const typesDialog = {
             },
         ]
     },
-    profile: {
-        type: 'profile',
-        textContent: "A resume profile is a short summary of your work experience, skills, achievements, and goals. It's a professional introduction to your resume and it shows off your ...",
-        linkTitle: 'Show Profile',
-        fields: [
-            {
-                label: 'Email',
-                name: 'email',
-                model: 'input',
-                required: true,
-                rule: [RULES.EMAIL.TYPE],
-                readOnly: true,
-                vBind: { class: 'field-input', type: 'text' }
-            },
-            {
-                label: 'First Name',
-                name: 'first_name',
-                model: 'input',
-                required: true,
-                vBind: { class: 'field-input', type: 'text' }
-            },
-            {
-                label: 'Last Name',
-                name: 'last_name',
-                model: 'input',
-                required: true,
-                vBind: { class: 'field-input', type: 'text' }
-            },
-            
-        ]
-    },
-    changePassword: {
-        type: 'changePassword',
-        textContent: 'CAPTCHA stands for the Completely Automated Public Turing test to tell Computers and Humans Apart. CAPTCHAs are tools you can use to differentiate between real users and automated users, such as bots.',
-        linkTitle: 'Please Enter Captcha',
-        fields: []
-    },
-    
 
 }
